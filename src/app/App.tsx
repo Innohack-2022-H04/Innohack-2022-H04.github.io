@@ -12,7 +12,6 @@ import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import dayjs, { Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -58,6 +57,7 @@ function App() {
   const handleCountry1Change = (event: SelectChangeEvent) => {
     setSelectCountry1(event.target.value as string);
   };
+
   const [selectedCountry2, setSelectCountry2] = React.useState('');
 
   const handleCountry2Change = (event: SelectChangeEvent) => {
@@ -69,10 +69,47 @@ function App() {
   const handleCountry3Change = (event: SelectChangeEvent) => {
     setSelectCountry3(event.target.value as string);
   };
+
   const [selectedCountry4, setSelectCountry4] = React.useState('');
 
   const handleCountry4Change = (event: SelectChangeEvent) => {
     setSelectCountry4(event.target.value as string);
+  };
+
+  const [selectedCountry5, setSelectCountry5] = React.useState('');
+
+  const handleCountry5Change = (event: SelectChangeEvent) => {
+    setSelectCountry5(event.target.value as string);
+  };
+
+  const [selectedCountry6, setSelectCountry6] = React.useState('');
+
+  const handleCountry6Change = (event: SelectChangeEvent) => {
+    setSelectCountry6(event.target.value as string);
+  };
+
+  const [selectedCountry7, setSelectCountry7] = React.useState('');
+
+  const handleCountry7Change = (event: SelectChangeEvent) => {
+    setSelectCountry7(event.target.value as string);
+  };
+
+  const [selectedCountry8, setSelectCountry8] = React.useState('');
+
+  const handleCountry8Change = (event: SelectChangeEvent) => {
+    setSelectCountry8(event.target.value as string);
+  };
+
+  const [selectedCountry9, setSelectCountry9] = React.useState('');
+
+  const handleCountry9Change = (event: SelectChangeEvent) => {
+    setSelectCountry9(event.target.value as string);
+  };
+
+  const [selectedCountry10, setSelectCountry10] = React.useState('');
+
+  const handleCountry10Change = (event: SelectChangeEvent) => {
+    setSelectCountry10(event.target.value as string);
   };
 
   return (
@@ -100,7 +137,7 @@ function App() {
           </Typography>
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <Stack spacing={3}>
-              <InputLabel>Period</InputLabel>
+              <InputLabel >Period Details</InputLabel>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Stack spacing={3}>
                   <Grid container spacing={2}>
@@ -110,7 +147,7 @@ function App() {
                         inputFormat="DD/MM/YYYY"
                         value={selectedStartDate}
                         onChange={handleStartDateChange}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} fullWidth />}
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -119,22 +156,23 @@ function App() {
                         inputFormat="DD/MM/YYYY"
                         value={selectedEndDate}
                         onChange={handleEndDateChange}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} fullWidth />}
                       />
                     </Grid>
                   </Grid>
                 </Stack>
               </LocalizationProvider>
-              <InputLabel>Countries</InputLabel>
-              <Grid container spacing={2}>
-                <Grid item xs={6}>
-                  <FormControl fullWidth>
-                    <InputLabel>Country1</InputLabel>
+              <InputLabel>Countries Details</InputLabel>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 1</InputLabel>
                     <Select
                       value={selectedCountry1}
                       onChange={handleCountry1Change}
-                      input={<OutlinedInput label="Country1" />}
+                      input={<OutlinedInput label="Country 1" />}
                       MenuProps={MenuProps}
+                      fullWidth
                     >
                       {countryList.map((name) => (
                         <MenuItem
@@ -145,71 +183,222 @@ function App() {
                         </MenuItem>
                       ))}
                     </Select>
-                  </FormControl>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 2</InputLabel>
+                    <Select
+                      value={selectedCountry2}
+                      onChange={handleCountry2Change}
+                      input={<OutlinedInput label="Country 2" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel>Country2</InputLabel>
-                  <Select
-                    value={selectedCountry2}
-                    onChange={handleCountry2Change}
-                    input={<OutlinedInput label="Country2" />}
-                    MenuProps={MenuProps}
-                  >
-                    {countryList.map((name) => (
-                      <MenuItem
-                        key={name}
-                        value={name}
-                      >
-                        {name}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                  </FormControl>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 3</InputLabel>
+                    <Select
+                      value={selectedCountry3}
+                      onChange={handleCountry3Change}
+                      input={<OutlinedInput label="Country 3" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 4</InputLabel>
+                    <Select
+                      value={selectedCountry4}
+                      onChange={handleCountry4Change}
+                      input={<OutlinedInput label="Country 4" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel>Country3</InputLabel>
-                  <Select
-                    value={selectedCountry3}
-                    onChange={handleCountry3Change}
-                    input={<OutlinedInput label="Country3" />}
-                    MenuProps={MenuProps}
-                  >
-                    {countryList.map((name) => (
-                      <MenuItem
-                        key={name}
-                        value={name}
-                      >
-                        {name}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                  </FormControl>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 5</InputLabel>
+                    <Select
+                      value={selectedCountry5}
+                      onChange={handleCountry5Change}
+                      input={<OutlinedInput label="Country 5" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 6</InputLabel>
+                    <Select
+                      value={selectedCountry6}
+                      onChange={handleCountry6Change}
+                      input={<OutlinedInput label="Country 6" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                <FormControl fullWidth>
-                  <InputLabel>Country4</InputLabel>
-                  <Select
-                    value={selectedCountry4}
-                    onChange={handleCountry4Change}
-                    input={<OutlinedInput label="Country4" />}
-                    MenuProps={MenuProps}
-                  >
-                    {countryList.map((name) => (
-                      <MenuItem
-                        key={name}
-                        value={name}
-                      >
-                        {name}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                  </FormControl>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 7</InputLabel>
+                    <Select
+                      value={selectedCountry7}
+                      onChange={handleCountry7Change}
+                      input={<OutlinedInput label="Country 7" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 8</InputLabel>
+                    <Select
+                      value={selectedCountry8}
+                      onChange={handleCountry8Change}
+                      input={<OutlinedInput label="Country 8" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 9</InputLabel>
+                    <Select
+                      value={selectedCountry9}
+                      onChange={handleCountry9Change}
+                      input={<OutlinedInput label="Country 9" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <InputLabel>Country 10</InputLabel>
+                    <Select
+                      value={selectedCountry10}
+                      onChange={handleCountry10Change}
+                      input={<OutlinedInput label="Country 10" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {countryList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
+                </Grid>
+              </Stack>
+              <InputLabel>Next of Kin Details</InputLabel>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Name</InputLabel>
+                    <TextField type="string" fullWidth />
+                  </Grid>
+                </Grid>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Relationship</InputLabel>
+                    <TextField type="string" fullWidth />
+                  </Grid>
+                </Grid>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Contact Number</InputLabel>
+                    <TextField type="string" fullWidth />
+                  </Grid>
+                </Grid>
+              </Stack>
             </Stack>
-
             <Button
               type="submit"
               fullWidth
@@ -223,7 +412,7 @@ function App() {
         </Box>
       </Container>
 
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 export default App;
