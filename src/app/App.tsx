@@ -36,7 +36,11 @@ const MenuProps = {
 function App() {
   const countryList = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre & Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts & Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
 
-  const reasonList = ["Leisure", "Work"];
+  const reasonList = ["Official Duties", "Recreational", "Visiting Friends / Relatives", "Others"];
+
+  const travelModeList = ["Aircraft", "Bus", "Ferry / Ship", "Motorcycle", "Car", "Train", "Others"];
+
+  const relationshipList = ["Spouse", "Child", "Father", "Mother", "Brother", "Sister", "Uncle", "Auntie", "Cousin", "Nephew", "Niece", "Grandfather", "Grandmother", "Father-in-law", "Mother-in-law", "Registered Partner", "Adopted Child", "Brother/Sister", "Friend", "Step-father", "Step-mother", "Step-brother", "Step-sister", "Half-brother", "Half-sister", "Adoptive-father", "Adoptive-mother", "Adoptive-brother", "Adoptive-sister"];
 
   const [selectedStartDate, setSelectedStartDate] = React.useState<Dayjs | null>(
     dayjs(),
@@ -54,10 +58,34 @@ function App() {
     setSelectedEndDate(newValue);
   };
 
-  const [selectedReason, setSelectReason] = React.useState('');
+  const [selectedTravelModeDeparture, setSelectTravelModeDeparture] = React.useState('');
 
-  const handleReasonChange = (event: SelectChangeEvent) => {
-    setSelectReason(event.target.value as string);
+  const handleTravelModeDepartureChange = (event: SelectChangeEvent) => {
+    setSelectTravelModeDeparture(event.target.value as string);
+  };
+
+  const [selectedTravelModeReturn, setSelectTravelModeReturn] = React.useState('');
+
+  const handleTravelModeReturnChange = (event: SelectChangeEvent) => {
+    setSelectTravelModeReturn(event.target.value as string);
+  };
+
+  const [selectedReason1, setSelectReason1] = React.useState('');
+
+  const handleReason1Change = (event: SelectChangeEvent) => {
+    setSelectReason1(event.target.value as string);
+  };
+
+  const [selectedReason2, setSelectReason2] = React.useState('');
+
+  const handleReason2Change = (event: SelectChangeEvent) => {
+    setSelectReason2(event.target.value as string);
+  };
+
+  const [selectedReason3, setSelectReason3] = React.useState('');
+
+  const handleReason3Change = (event: SelectChangeEvent) => {
+    setSelectReason3(event.target.value as string);
   };
 
   const [selectedCountry1, setSelectCountry1] = React.useState('');
@@ -120,6 +148,12 @@ function App() {
     setSelectCountry10(event.target.value as string);
   };
 
+  const [selectedRelationship, setSelectRelationship] = React.useState('');
+
+  const handleRelationshipChange = (event: SelectChangeEvent) => {
+    setSelectRelationship(event.target.value as string);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -171,12 +205,54 @@ function App() {
                 </Stack>
                 <Stack spacing={3}>
                   <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                      <InputLabel>Reason of Travel</InputLabel>
+                    <Grid item xs={6}>
+                      <InputLabel>Travel Mode (Departure)</InputLabel>
                       <Select
-                        value={selectedReason}
-                        onChange={handleReasonChange}
-                        input={<OutlinedInput label="Reason of Travel" />}
+                        value={selectedTravelModeDeparture}
+                        onChange={handleTravelModeDepartureChange}
+                        input={<OutlinedInput label="Travel Mode (Departure)" />}
+                        MenuProps={MenuProps}
+                        fullWidth
+                      >
+                        {travelModeList.map((name) => (
+                          <MenuItem
+                            key={name}
+                            value={name}
+                          >
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <InputLabel>Travel Mode (Return)</InputLabel>
+                      <Select
+                        value={selectedTravelModeReturn}
+                        onChange={handleTravelModeReturnChange}
+                        input={<OutlinedInput label="Travel Mode (Return)" />}
+                        MenuProps={MenuProps}
+                        fullWidth
+                      >
+                        {travelModeList.map((name) => (
+                          <MenuItem
+                            key={name}
+                            value={name}
+                          >
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </Grid>
+                  </Grid>
+                </Stack>
+                <Stack spacing={3}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <InputLabel>Travel Reasons 1</InputLabel>
+                      <Select
+                        value={selectedReason1}
+                        onChange={handleReason1Change}
+                        input={<OutlinedInput label="Travel Reasons 1" />}
                         MenuProps={MenuProps}
                         fullWidth
                       >
@@ -195,8 +271,46 @@ function App() {
                 <Stack spacing={3}>
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
-                      <InputLabel>Address of Travel</InputLabel>
-                      <TextField type="string" fullWidth />
+                      <InputLabel>Travel Reasons 2</InputLabel>
+                      <Select
+                        value={selectedReason2}
+                        onChange={handleReason2Change}
+                        input={<OutlinedInput label="Travel Reasons 2" />}
+                        MenuProps={MenuProps}
+                        fullWidth
+                      >
+                        {reasonList.map((name) => (
+                          <MenuItem
+                            key={name}
+                            value={name}
+                          >
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </Grid>
+                  </Grid>
+                </Stack>
+                <Stack spacing={3}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <InputLabel>Travel Reasons 3</InputLabel>
+                      <Select
+                        value={selectedReason3}
+                        onChange={handleReason3Change}
+                        input={<OutlinedInput label="Travel Reasons 3" />}
+                        MenuProps={MenuProps}
+                        fullWidth
+                      >
+                        {reasonList.map((name) => (
+                          <MenuItem
+                            key={name}
+                            value={name}
+                          >
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </Select>
                     </Grid>
                   </Grid>
                 </Stack>
@@ -412,11 +526,28 @@ function App() {
                   </Grid>
                 </Grid>
               </Stack>
-              <InputLabel>Next of Kin Details</InputLabel>
+              <InputLabel>Additional Overseas Details</InputLabel>
               <Stack spacing={3}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <InputLabel>Name</InputLabel>
+                    <InputLabel>Address in foreign country (including Hotels). Please indicate the city/cities and states</InputLabel>
+                    <TextField type="string" fullWidth multiline rows={5} />
+                  </Grid>
+                </Grid>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Mobile Contact Number (Local/Overseas)</InputLabel>
+                    <TextField type="string" fullWidth />
+                  </Grid>
+                </Grid>
+              </Stack>
+              <InputLabel>Person to contact in Singapore in case of emergency</InputLabel>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Name of Contact Person</InputLabel>
                     <TextField type="string" fullWidth />
                   </Grid>
                 </Grid>
@@ -425,6 +556,29 @@ function App() {
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <InputLabel>Relationship</InputLabel>
+                    <Select
+                      value={selectedRelationship}
+                      onChange={handleRelationshipChange}
+                      input={<OutlinedInput label="Relationship" />}
+                      MenuProps={MenuProps}
+                      fullWidth
+                    >
+                      {relationshipList.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Grid>
+                </Grid>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Home / Office Number</InputLabel>
                     <TextField type="string" fullWidth />
                   </Grid>
                 </Grid>
@@ -432,8 +586,25 @@ function App() {
               <Stack spacing={3}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <InputLabel>Contact Number</InputLabel>
+                    <InputLabel>Mobile Number</InputLabel>
                     <TextField type="string" fullWidth />
+                  </Grid>
+                </Grid>
+              </Stack>
+
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Alternative Number</InputLabel>
+                    <TextField type="string" fullWidth />
+                  </Grid>
+                </Grid>
+              </Stack>
+              <Stack spacing={3}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <InputLabel>Residential Address </InputLabel>
+                    <TextField type="string" fullWidth multiline rows={5} />
                   </Grid>
                 </Grid>
               </Stack>
